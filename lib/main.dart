@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'views/splash_screen.dart'; // Импортируем сплеш-скрин
+import 'package:provider/provider.dart'; // Импортируем провайдер
+import 'views/home_screen.dart'; // Импортируем главный экран
+import 'providers/task_provider.dart'; // Импортируем провайдер задач
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => TaskProvider()..fetchTasks()), // Провайдер задач
+      ],
+      child: const MyApp(), // Запускаем приложение
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,21 +28,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashScreen(), // Сплеш-скрин
         '/home': (context) => HomeScreen(), // Главный экран
       },
-    );
-  }
-}
-
-// Пример заглушки для главного экрана
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Главная страница'),
-      ),
-      body: Center(
-        child: Text('Добро пожаловать в To-Do List!'),
-      ),
     );
   }
 }

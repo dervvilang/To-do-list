@@ -68,10 +68,10 @@ class Task {
     switch (category.toLowerCase()) {
       case 'работа':
         return Icons.work;
-      case 'учеба':
+      case 'учёба':
         return Icons.school;
-      case 'домашние дела':
-        return Icons.home;
+      case 'личное':
+        return Icons.person;
       default:
         return Icons.task;  
     }
