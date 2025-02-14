@@ -129,6 +129,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   Navigator.pop(context);
                 },
                 child: const Text('Сохранить'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color.fromARGB(198, 255, 87, 132),
+                  shadowColor: const Color.fromARGB(255, 255, 87, 132),
+                  textStyle: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
               ),
             ),
           ],

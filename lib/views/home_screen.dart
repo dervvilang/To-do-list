@@ -48,7 +48,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
                       child: ChoiceChip(
-                        label: Text(category),
+                        label: Text(category,
+                          style: TextStyle(
+                            color: selectedCategory == category ? Colors.white : Colors.white,
+                          ),
+                        ),
+                        backgroundColor: const Color.fromARGB(255, 255, 162, 187),
+                        selectedColor: const Color.fromARGB(255, 255, 136, 168),
+                        checkmarkColor: Colors.white,
+                        side: BorderSide(
+                          color: selectedCategory == category
+                            ? const Color.fromARGB(235, 255, 106, 146)
+                            : const Color.fromARGB(255, 255, 152, 179),
+                          width: 2
+                        ),
                         selected: selectedCategory == category,
                         onSelected: (bool selected) {
                           setState(() {
@@ -130,16 +143,17 @@ class _HomeScreenState extends State<HomeScreen> {
     return Dismissible(
       key: Key(task.id.toString()),
       background: Container(
-        color: Colors.deepOrange, // Цвет фона при удалении задачи
+        color: const Color.fromARGB(255, 201, 42, 76), // Цвет фона при удалении задачи
         alignment: Alignment.centerRight, // Выравнивание по правому краю
         padding: const EdgeInsets.only(right: 20), // Отступ справа
-        child: const Icon(Icons.delete, color: Colors.white),
+        child: const Icon(Icons.delete, color: Color.fromARGB(255, 255, 226, 234)),
       ),
       direction: DismissDirection.endToStart, // Указываем направление свайпа
       onDismissed: (direction) {
         taskProvider.deleteTask(task.id!); // Удаляем задачу
       },
       child: Card(
+        surfaceTintColor: const Color.fromARGB(255, 255, 114, 154),
         child: ListTile(
           title: Text(
             task.title,
